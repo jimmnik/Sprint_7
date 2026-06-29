@@ -2,6 +2,8 @@ package tests;
 
 import models.request.CreateCourierRequest;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.DisplayName;
+
 import static org.hamcrest.Matchers.equalTo;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +15,7 @@ public abstract class BaseTest {
     protected final List<CreateCourierRequest> createdCouriers = new ArrayList<>();
 
     @AfterEach
+    @DisplayName("Удаление курьера")
     void tearDown() {
         for (CreateCourierRequest courier : createdCouriers) {
             deleteCourier(courier)

@@ -3,6 +3,7 @@ package tests;
 import io.restassured.response.Response;
 import models.request.CreateCourierRequest;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.hamcrest.Matchers.*;
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import static steps.CourierSteps.*;
 public class CreateCourierTests extends BaseTest{
 
     @Test
+    @DisplayName("Успешное зоздание курьера")
     void createCourierSuccessful() {
         CreateCourierRequest courier = randomCourier();
 
@@ -23,6 +25,7 @@ public class CreateCourierTests extends BaseTest{
     }
 
     @Test
+    @DisplayName("Успешное создаине курьра с запросом, который содержит только обязательные поля")
     void createCourierSuccessfulWithOutFirstName() {
         CreateCourierRequest courier = randomCourier();
         courier.setFirstName(null);
@@ -35,6 +38,7 @@ public class CreateCourierTests extends BaseTest{
     }
 
     @Test
+    @DisplayName("Ошибка при попытке создать курьера без логина")
     void createCourierFailsWithoutLogin() {
         CreateCourierRequest courier = randomCourier();
         courier.setLogin(null);
@@ -47,6 +51,7 @@ public class CreateCourierTests extends BaseTest{
     }
 
     @Test
+    @DisplayName("Ошибка при попытке создать курьера без пароля")
     void createCourierFailsWithoutPassword() {
         CreateCourierRequest courier = randomCourier();
         courier.setPassword(null);
@@ -59,6 +64,7 @@ public class CreateCourierTests extends BaseTest{
     }
 
     @Test
+    @DisplayName("Ошибка при попытке создать курьера с уже существующим логином")
     void duplicateCourier() {
         CreateCourierRequest courierOriginal = randomCourier();
         CreateCourierRequest courierDuplicate = randomCourier();
